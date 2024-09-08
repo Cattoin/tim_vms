@@ -1,0 +1,182 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:TR-{#####}",
+ "creation": "2024-09-06 21:59:59.858943",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_37ut",
+  "vol_name",
+  "vol_contact_number",
+  "vol_email",
+  "current_status",
+  "time_commitment",
+  "column_break_2vvz",
+  "whether_pwd",
+  "vol_address",
+  "choosen_center",
+  "preferred_day",
+  "prior_experience",
+  "section_break_fmou",
+  "team_experience",
+  "column_break_tu4r",
+  "views_on_supporting_pwd",
+  "section_break_jfa0",
+  "notes",
+  "column_break_zmrb",
+  "assigned_center",
+  "volunteer_status"
+ ],
+ "fields": [
+  {
+   "fieldname": "vol_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Vol Name"
+  },
+  {
+   "fieldname": "vol_contact_number",
+   "fieldtype": "Phone",
+   "label": "Vol Contact Number"
+  },
+  {
+   "fieldname": "vol_email",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Vol Email",
+   "options": "Email"
+  },
+  {
+   "fieldname": "current_status",
+   "fieldtype": "Select",
+   "label": "Current status",
+   "options": "Working\nStudying\nJust Chilling"
+  },
+  {
+   "fieldname": "whether_pwd",
+   "fieldtype": "Select",
+   "label": "Whether PWD",
+   "options": "Yes\nNo"
+  },
+  {
+   "fieldname": "choosen_center",
+   "fieldtype": "Select",
+   "label": "Choosen Location",
+   "options": "HSR Layout\nKothanur\nKoramangala\nMalleshwaram\nDomlur"
+  },
+  {
+   "fieldname": "preferred_day",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Preferred day",
+   "options": "Saturday\nSunday\nI am only free on weekdays not on weekends"
+  },
+  {
+   "fieldname": "team_experience",
+   "fieldtype": "Small Text",
+   "label": "Team Experience"
+  },
+  {
+   "fieldname": "views_on_supporting_pwd",
+   "fieldtype": "Small Text",
+   "label": "Views on supporting PWD"
+  },
+  {
+   "fieldname": "time_commitment",
+   "fieldtype": "Select",
+   "label": "Time commitment",
+   "options": "Yes I commit to be a part of this volunteering program for an Year\nNo I cannot commit for 3 months"
+  },
+  {
+   "fieldname": "prior_experience",
+   "fieldtype": "Data",
+   "label": "Prior experience"
+  },
+  {
+   "fieldname": "vol_address",
+   "fieldtype": "Data",
+   "label": "Vol Address"
+  },
+  {
+   "fieldname": "volunteer_status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Volunteer Status",
+   "options": "Signed up\nApproved\nRejected\nCompleted"
+  },
+  {
+   "fieldname": "section_break_37ut",
+   "fieldtype": "Section Break",
+   "label": "Volunteer preliminary data"
+  },
+  {
+   "fieldname": "column_break_2vvz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_fmou",
+   "fieldtype": "Section Break",
+   "label": "Descriptive data"
+  },
+  {
+   "fieldname": "column_break_tu4r",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_jfa0",
+   "fieldtype": "Section Break",
+   "label": "Internal data"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "column_break_zmrb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "assigned_center",
+   "fieldtype": "Link",
+   "label": "Assigned center",
+   "options": "TIM Center"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-09-08 13:02:01.520119",
+ "modified_by": "Administrator",
+ "module": "tim_vms",
+ "name": "TIM Registration",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "report": 1,
+   "role": "Guest",
+   "share": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "vol_name"
+}

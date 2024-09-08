@@ -1,0 +1,63 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:TC-{#####}",
+ "creation": "2024-09-06 18:27:23.324531",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "center_name",
+  "center_location"
+ ],
+ "fields": [
+  {
+   "fieldname": "center_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Center Name"
+  },
+  {
+   "fieldname": "center_location",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Center Location"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-09-08 13:00:59.592535",
+ "modified_by": "Administrator",
+ "module": "tim_vms",
+ "name": "TIM Center",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Guest",
+   "select": 1,
+   "share": 1
+  }
+ ],
+ "show_title_field_in_link": 1,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "center_name"
+}

@@ -1,0 +1,260 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIM</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: white;
+            color: black;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: black;
+            color: white;
+            height: 40px;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .profile-icon {
+            width: 30px;
+            height: 30px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: black;
+            font-weight: bold;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 60px);
+        }
+        .section-a {
+            padding: 20px;
+            background-color: #f0f0f0;
+            flex-grow: 0; /* Allow this section to grow based on content */
+        }
+        .section-b {
+            flex-grow: 1; /* Allow this section to take up remaining space */
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        .welcome-title {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+        .small-text {
+            font-size: 14px;
+            margin: 5px 0;
+        }
+        .count-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin: 10px 0;
+        }
+        .count {
+            text-align: left; /* Align text to the left */
+            flex: 1; /* Allow counts to take equal space */
+        }
+        .count-number {
+            font-size: 36px;
+            font-weight: bold;
+        }
+        .count-label {
+            font-size: 14px;
+        }
+        .volunteering-box {
+            border: 1px solid black;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        .button {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .button-outline {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            background-color: white; /* White background */
+            color: black; /* Black text */
+            border: 2px solid black; /* Black border */
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .button-link {
+            text-decoration: none;
+            width: 100%;
+        }
+
+        .button-container {
+            display: flex; /* Use flexbox to align buttons horizontally */
+            justify-content: center; /* Center the buttons */
+            margin: 10px 0; /* Add margin for spacing */
+        }
+
+        .buttonyes, .buttonno {
+            width: 30%; /* Set width for both buttons */
+            padding: 10px;
+            margin: 0 5px; /* Add horizontal margin for spacing between buttons */
+            background-color: white; /* White background */
+            color: black; /* Black text */
+            border: 2px solid black; /* Black border */
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px; /* Adjust font size for better readability */
+            transition: background-color 0.3s; /* Add transition for hover effect */
+        }
+
+        .buttonyes:hover, .buttonno:hover {
+            background-color: #555; /* Darker shade on hover */
+        }
+        .hidden {
+            display: none;
+        }
+        .input-container {
+            display: flex;
+            align-items: center;
+        }
+        .arrow-icon {
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        #reasonInput {
+            width: 70%; /* Set width of the input box */
+            padding: 10px; /* Padding for the input box */
+            margin-right: 10px; /* Space between input and submit button */
+            border: 1px solid #ccc; /* Light gray border */
+            border-radius: 5px; /* Rounded corners */
+            font-size: 14px; /* Font size for input text */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+        }
+
+        /* Styles for the submit button (arrow icon) */
+        .arrow-icon {
+            cursor: pointer; /* Pointer cursor on hover */
+            font-size: 20px; /* Size of the arrow icon */
+            padding: 8px; /* Padding around the icon */
+            background-color: #333; /* Same background color as buttons */
+            color: white; /* White color for the icon */
+            border-radius: 5px; /* Rounded corners */
+            transition: background-color 0.3s; /* Transition for hover effect */
+        }
+
+        .arrow-icon:hover {
+            background-color: #555; /* Darker shade on hover */
+        }
+    </style>
+    <script>
+		window.frappe = {};
+		window._version_number = "{{ build_version }}";
+		frappe.ready_events = [];
+		frappe.ready = function(fn) {
+			frappe.ready_events.push(fn);
+		}
+		window.dev_server = {{ dev_server }};
+		window.socketio_port = {{ (frappe.socketio_port or 9000) }};
+	</script>
+</head>
+<body>
+ 
+    {% if frappe.session.user != 'Guest' %}
+    <header>
+        <h1>The Inclusion Movement</h1>
+        <div class="profile-icon">{{userinfo.first_name[0]}}</div>
+    </ul>
+    </header>
+    <div class="container">
+        <div class="section-a">
+            <h2 class="welcome-title">Hey, {{userinfo.first_name}} 👋</h2>
+            <div class="volunteering-box">
+                <h3 class="small-text">You have volunteered for</h3>
+                <div class="count-container">
+                    <div class="count">
+                        <div class="count-number">{{ecount}}</div>
+                        <div class="count-label">times</div>
+                    </div>
+                    <div class="count">
+                        <div class="count-number">{{hrscount}}</div>
+                        <div class="count-label">hours</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-b">
+            {% if volreginfo.volunteering_status == 'Accepted' %}
+                {% if volreginfo.preferred_day == 'Saturday' or volreginfo.preferred_day == 'Sunday'%}
+                    <p>Your upcoming activity is on {{ volreginfo.preferred_day }} at {{ volreginfo.assigned_center }}</p>
+                    <div id="rsvpPrompt" data-preferred-day="{{ volreginfo.preferred_day }}" data-email="{{current_user}}">
+                        <h3 class="welcome-title">Are you joining us?</h3>
+                        <div class="button-container">
+                            <button id="yesButton" class="buttonyes">Yes</button>
+                            <button id="noButton" class="buttonyes">No</button>
+                        </div>
+                    </div>
+                    <div id="thanksMessage" class="hidden">
+                        <h3 class="welcome-title">Thanks for confirming!</p>
+                    </div>
+                    <div id="reasonContainer" class="hidden">
+                        <p>Would you like to tell us the reason?</p>
+                        <div class="input-container">
+                            <input type="text" id="reasonInput" placeholder="Your reason here" />
+                            <span class="arrow-icon" id="submitReason">✓</span>
+                        </div>
+                    </div>
+                {% endif %}
+                <a href="/app-submit-data?center_id={{volreginfo.assigned_center}}&volunteer_email={{current_user}}&volunteer_contact={{volreginfo.vol_contact_number}}&volunteer_name={{userinfo.first_name}}" class="button-link"><button class="button">Submit Data</button></a>
+                <a href="/app-resources" class="button-link "><button class="button-outline">View Resources</button></a>
+            {% endif %}
+        </div>
+    </div>
+    
+    {% endif %}
+    {%- block script %}
+    {% if colocated_js -%}
+        <script>{{ colocated_js }}</script>
+    {%- endif %}
+    {{ include_script('fcm.bundle.js') }}
+{%- endblock %}
+    {% block base_scripts %}
+	<!-- js should be loaded in body! -->
+	<script>
+		frappe.boot = {{ boot }}
+		// for backward compatibility of some libs
+		frappe.sys_defaults = frappe.boot.sysdefaults;
+	</script>
+	{{ include_script('frappe-web.bundle.js') }}
+	{% endblock %}
+
+	{%- for link in web_include_js %}
+	{{ include_script(link) }}
+	{%- endfor -%}
+	<!-- csrf_token -->
+	{%- block body_include %}{{ body_include or "" }}{% endblock -%}
+</body>
+</html>

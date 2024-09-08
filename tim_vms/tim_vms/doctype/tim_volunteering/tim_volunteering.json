@@ -1,0 +1,136 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:TV-{#####}",
+ "creation": "2024-09-06 18:31:03.973950",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "volunteer_name",
+  "activity_id",
+  "center_id",
+  "date",
+  "hours",
+  "status",
+  "column_break_ovky",
+  "volunteer_email",
+  "volunteer_contact",
+  "activities_done",
+  "takeaway",
+  "rating",
+  "feedback"
+ ],
+ "fields": [
+  {
+   "fieldname": "activity_id",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Activity ID",
+   "options": "TIM Activity"
+  },
+  {
+   "fieldname": "center_id",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Center ID",
+   "options": "TIM Center"
+  },
+  {
+   "fieldname": "volunteer_email",
+   "fieldtype": "Link",
+   "label": "Volunteer email",
+   "options": "User"
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fieldname": "hours",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Hours"
+  },
+  {
+   "fieldname": "activities_done",
+   "fieldtype": "Data",
+   "label": "Activities done"
+  },
+  {
+   "fieldname": "takeaway",
+   "fieldtype": "Data",
+   "label": "Takeaway"
+  },
+  {
+   "fieldname": "rating",
+   "fieldtype": "Rating",
+   "label": "Rating"
+  },
+  {
+   "fieldname": "feedback",
+   "fieldtype": "Data",
+   "label": "Feedback"
+  },
+  {
+   "default": "Pending",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Pending\nApproved\nRejected"
+  },
+  {
+   "fieldname": "volunteer_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Volunteer Name"
+  },
+  {
+   "fieldname": "volunteer_contact",
+   "fieldtype": "Phone",
+   "label": "Volunteer contact"
+  },
+  {
+   "fieldname": "column_break_ovky",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-09-08 13:00:49.081806",
+ "modified_by": "Administrator",
+ "module": "tim_vms",
+ "name": "TIM Volunteering",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Volunteer",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}
