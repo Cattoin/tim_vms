@@ -2563,19 +2563,36 @@
     Notification.requestPermission().then((permission) => {
       if (permission === "granted") {
         console.log("Notification permission granted.");
+        getTokenAndHandle();
+      } else {
+        console.log("Notification permission denied.");
       }
     });
   }
-  requestPermission();
-  getToken2(messaging, { vapidKey: "BOYVGpgQgNfYW5Zv6ODdPdPVtU0I1Q7ohU9M9mVobqPhb7E-Qb_VfJodMfXq32ULj6DvMJHJLisGHyQ4-IjJK1U" }).then((currentToken) => {
-    if (currentToken) {
-      console.log(currentToken);
-    } else {
-      console.log("No registration token available. Request permission to generate one.");
-    }
-  }).catch((err) => {
-    console.log("An error occurred while retrieving token. ", err);
+  console.log(frappe.session.user);
+  console.log("okko");
+  function getTokenAndHandle() {
+    getToken2(messaging, { vapidKey: "BOYVGpgQgNfYW5Zv6ODdPdPVtU0I1Q7ohU9M9mVobqPhb7E-Qb_VfJodMfXq32ULj6DvMJHJLisGHyQ4-IjJK1U" }).then((currentToken) => {
+      if (currentToken) {
+        console.log(currentToken);
+      } else {
+        console.log("No registration token available. Request permission to generate one.");
+      }
+    }).catch((err) => {
+      console.log("An error occurred while retrieving token. ", err);
+    });
+  }
+  document.getElementById("enable-notifications-button").addEventListener("click", function() {
+    requestPermission();
   });
+  document.getElementById("close-popup").addEventListener("click", function() {
+    document.getElementById("notification-permission").style.display = "none";
+  });
+  if (Notification.permission === "granted") {
+    getTokenAndHandle();
+  } else {
+    document.getElementById("notification-permission").style.display = "flex";
+  }
   if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("/firebase-messaging-sw.js").then((registration) => {
       console.log("Service Worker registered with scope:", registration.scope);
@@ -2694,4 +2711,4 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-//# sourceMappingURL=fcm.bundle.HH6ERNSZ.js.map
+//# sourceMappingURL=fcm.bundle.WBAYMC4P.js.map

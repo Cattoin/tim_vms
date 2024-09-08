@@ -169,6 +169,58 @@
         .arrow-icon:hover {
             background-color: #555; /* Darker shade on hover */
         }
+
+        .popup {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000; /* Ensure it appears above other content */
+    }
+
+    /* Popup content */
+    .popup-content {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        text-align: center;
+    }
+
+    /* Close button */
+    .close-button {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .close-button:hover,
+    .close-button:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    /* Button styling */
+    #enable-notifications-button {
+        background-color: #4CAF50; /* Green */
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    #enable-notifications-button:hover {
+        background-color: #45a049; /* Darker green */
+    }
     </style>
     <script>
 		window.frappe = {};
@@ -189,6 +241,13 @@
         <div class="profile-icon">{{userinfo.first_name[0]}}</div>
     </ul>
     </header>
+    <div id="notification-permission" class="popup" style="display: none;">
+        <div class="popup-content">
+            <span class="close-button" id="close-popup">&times;</span>
+            <p>Please enable notifications to receive updates.</p>
+            <button id="enable-notifications-button">Enable Notifications</button>
+        </div>
+    </div>
     <div class="container">
         <div class="section-a">
             <h2 class="welcome-title">Hey, {{userinfo.first_name}} 👋</h2>
@@ -207,11 +266,11 @@
             </div>
         </div>
         <div class="section-b">
-            {% if volreginfo.volunteering_status == 'Accepted' %}
+            {% if volreginfo.volunteer_status == "Approved" %}
                 {% if volreginfo.preferred_day == 'Saturday' or volreginfo.preferred_day == 'Sunday'%}
-                    <p>Your upcoming activity is on {{ volreginfo.preferred_day }} at {{ volreginfo.assigned_center }}</p>
+                    <p>Your upcoming activity is on {{ volreginfo.preferred_day }} at {{ center_name }}</p>
                     <div id="rsvpPrompt" data-preferred-day="{{ volreginfo.preferred_day }}" data-email="{{current_user}}">
-                        <h3 class="welcome-title">Are you joining us?</h3>
+                        <p>Are you joining us?</p>
                         <div class="button-container">
                             <button id="yesButton" class="buttonyes">Yes</button>
                             <button id="noButton" class="buttonyes">No</button>
@@ -228,7 +287,9 @@
                         </div>
                     </div>
                 {% endif %}
-                <a href="/app-submit-data?center_id={{volreginfo.assigned_center}}&volunteer_email={{current_user}}&volunteer_contact={{volreginfo.vol_contact_number}}&volunteer_name={{userinfo.first_name}}" class="button-link"><button class="button">Submit Data</button></a>
+                <br>
+                <br>
+                <a href="/app-submit-data/new?center_id={{volreginfo.assigned_center}}&volunteer_email={{curr_user}}&volunteer_contact={{volreginfo.vol_contact_number}}&volunteer_name={{userinfo.first_name}}" class="button-link"><button class="button">Submit Data</button></a>
                 <a href="/app-resources" class="button-link "><button class="button-outline">View Resources</button></a>
             {% endif %}
         </div>

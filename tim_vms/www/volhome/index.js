@@ -1,8 +1,6 @@
 frappe.ready(() => {
-    console.log('heree');
     check_login();
 });
-console.log("index.js is loaded successfully.");
 
 const check_login = () =>{
     if (frappe.session.user == "Guest"){

@@ -1,36 +1,33 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "format:TC-{#####}",
- "creation": "2024-09-06 18:27:23.324531",
+ "autoname": "format:TUN-{#####}",
+ "creation": "2024-09-09 00:55:33.396999",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "center_name",
-  "center_location"
+  "volunteer",
+  "token"
  ],
  "fields": [
   {
-   "allow_in_quick_entry": 1,
-   "fieldname": "center_name",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Center Name"
+   "fieldname": "volunteer",
+   "fieldtype": "Link",
+   "label": "Volunteer",
+   "options": "User"
   },
   {
-   "allow_in_quick_entry": 1,
-   "fieldname": "center_location",
+   "fieldname": "token",
    "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Center Location"
+   "label": "token"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-08 23:26:19.153965",
+ "modified": "2024-09-09 01:28:51.403184",
  "modified_by": "Administrator",
  "module": "tim_vms",
- "name": "TIM Center",
+ "name": "TIM User Notif",
  "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
@@ -47,20 +44,16 @@
    "write": 1
   },
   {
+   "create": 1,
    "email": 1,
    "export": 1,
    "print": 1,
-   "read": 1,
    "report": 1,
    "role": "Guest",
-   "select": 1,
    "share": 1
   }
  ],
- "quick_entry": 1,
- "show_title_field_in_link": 1,
  "sort_field": "creation",
  "sort_order": "DESC",
- "states": [],
- "title_field": "center_name"
+ "states": []
 }
