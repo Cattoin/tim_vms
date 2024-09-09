@@ -1,3 +1,6 @@
+importScripts('https://www.gstatic.com/firebasejs/14.0.0/firebase-app-compat.js');
+importScripts('https://www.gstatic.com/firebasejs/14.0.0/firebase-messaging-compat.js');
+
 const firebaseConfig = {
     apiKey: "AIzaSyBOLWhMz6Y-3ZDOsdDganfe_IgZ2EHVy7I",
     authDomain: "fcm-test-vms.firebaseapp.com",

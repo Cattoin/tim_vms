@@ -262,7 +262,6 @@
             </div>
         </div>
         <div class="section-b">
-            <p> {{volreginfo.volunteer_status}} {{volreginfo.preferred_day}} </p>
             {% if volreginfo.volunteer_status == "Approved" %}
                 {% if volreginfo.preferred_day == 'Saturday' or volreginfo.preferred_day == 'Sunday'%}
                     <p>Your upcoming activity is on {{ volreginfo.preferred_day }} at {{ center_name }}</p>
