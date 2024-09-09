@@ -1,5 +1,6 @@
 import frappe
 from frappe.utils import today, pretty_date
+no_cache = 1
 def get_context(context):
 	if frappe.session.user != "Guest":
 		context.curr_user = frappe.session.user

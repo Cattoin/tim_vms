@@ -1,6 +1,3 @@
-import { initializeApp } from "firebase/app";
-import { getMessaging, onBackgroundMessage } from "firebase/messaging/sw";
-
 const firebaseConfig = {
     apiKey: "AIzaSyBOLWhMz6Y-3ZDOsdDganfe_IgZ2EHVy7I",
     authDomain: "fcm-test-vms.firebaseapp.com",

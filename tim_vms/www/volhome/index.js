@@ -12,7 +12,8 @@ const check_login = () =>{
 const rsvpPrompt = document.getElementById('rsvpPrompt');
 const preferred_day = rsvpPrompt.getAttribute('data-preferred-day');
 const email = rsvpPrompt.getAttribute('data-email');
-
+console.log(preferred_day);
+console.log('which day?');
 document.getElementById('yesButton').addEventListener('click', () => {
     const date = getNextDate(preferred_day);
     postRSVP("Yes", date, email);
