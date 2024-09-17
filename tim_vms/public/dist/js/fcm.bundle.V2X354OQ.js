@@ -2569,12 +2569,30 @@
       }
     });
   }
-  console.log(frappe.session.user);
-  console.log("okko");
   function getTokenAndHandle() {
     getToken2(messaging, { vapidKey: "BOYVGpgQgNfYW5Zv6ODdPdPVtU0I1Q7ohU9M9mVobqPhb7E-Qb_VfJodMfXq32ULj6DvMJHJLisGHyQ4-IjJK1U" }).then((currentToken) => {
       if (currentToken) {
         console.log(currentToken);
+        const data = {
+          "token": currentToken
+        };
+        fetch("api/resource/TIM User Notif", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify(data)
+        }).then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.json();
+        }).then((data2) => {
+          console.log("Token saved successfully:", data2);
+        }).catch((error) => {
+          console.error("Error saving token:", error);
+        });
       } else {
         console.log("No registration token available. Request permission to generate one.");
       }
@@ -2594,7 +2612,7 @@
     document.getElementById("notification-permission").style.display = "flex";
   }
   if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("/firebase-messaging-sw.js").then((registration) => {
+    navigator.serviceWorker.register("/firebase-messaging-sw.js", { type: "module" }).then((registration) => {
       console.log("Service Worker registered with scope:", registration.scope);
     }).catch((error) => {
       console.error("Service Worker registration failed:", error);
@@ -2711,4 +2729,4 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-//# sourceMappingURL=fcm.bundle.WBAYMC4P.js.map
+//# sourceMappingURL=fcm.bundle.V2X354OQ.js.map
