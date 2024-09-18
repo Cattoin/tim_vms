@@ -1,4 +1,23 @@
-const firebaseConfig = {
+self.addEventListener("push", (event) => {
+
+    const notif = event.data.json().notification;
+
+    event.waitUntil(self.registration.showNotification(notif.title , {
+        body: notif.body,
+        icon: notif.image,
+        data: {
+            url: notif.click_action
+        }
+    }));
+
+});
+
+self.addEventListener("notificationclick", (event) => {
+
+    event.waitUntil(clients.openWindow(event.notification.data.url));
+
+});
+/*const firebaseConfig = {
     apiKey: "AIzaSyBOLWhMz6Y-3ZDOsdDganfe_IgZ2EHVy7I",
     authDomain: "fcm-test-vms.firebaseapp.com",
     projectId: "fcm-test-vms",
@@ -19,4 +38,4 @@ messaging.onBackgroundMessage((payload) => {
     };
 
     self.registration.showNotification(notificationTitle, notificationOptions);
-});
+});*/
