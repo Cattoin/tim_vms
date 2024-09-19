@@ -60,7 +60,7 @@ async function postRSVP(response, date, email, reason = null) {
     }
 
     try {
-        const res = await fetch('api/resource/RSVP', {
+        const res = await fetch('/api/resource/TIM RSVP', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

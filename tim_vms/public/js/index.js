@@ -36,7 +36,7 @@ function getTokenAndHandle() {
             const data = {
                 "token": currentToken
             }
-            fetch('api/resource/TIM User Notif', {
+            fetch('/api/resource/TIM User Notif', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -66,14 +66,16 @@ function getTokenAndHandle() {
 }
 
 document.getElementById('enable-notifications-button').addEventListener('click', function() {
+    document.getElementById('notification-permission').style.display = 'none';
     requestPermission();
 });
 
 document.getElementById('close-popup').addEventListener('click', function() {
     document.getElementById('notification-permission').style.display = 'none';
 });
+
 if (Notification.permission === 'granted') {
-    getTokenAndHandle();
+
 } else {
     document.getElementById('notification-permission').style.display = 'flex';
 }

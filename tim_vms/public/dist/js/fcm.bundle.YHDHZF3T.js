@@ -2576,7 +2576,7 @@
         const data = {
           "token": currentToken
         };
-        fetch("api/resource/TIM User Notif", {
+        fetch("/api/resource/TIM User Notif", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -2601,13 +2601,13 @@
     });
   }
   document.getElementById("enable-notifications-button").addEventListener("click", function() {
+    document.getElementById("notification-permission").style.display = "none";
     requestPermission();
   });
   document.getElementById("close-popup").addEventListener("click", function() {
     document.getElementById("notification-permission").style.display = "none";
   });
   if (Notification.permission === "granted") {
-    getTokenAndHandle();
   } else {
     document.getElementById("notification-permission").style.display = "flex";
   }
@@ -2729,4 +2729,4 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-//# sourceMappingURL=fcm.bundle.V2X354OQ.js.map
+//# sourceMappingURL=fcm.bundle.YHDHZF3T.js.map
