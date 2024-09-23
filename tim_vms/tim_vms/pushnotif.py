@@ -11,7 +11,7 @@ def user_id(doc):
     return user_device_id
 
 @frappe.whitelist()
-def send_notification(doc, event):
+def send_notification(doc):
     server_key = '/home/frappeusr/servicefile.json'
     device_tokens = user_id(doc)
     title = doc.title
