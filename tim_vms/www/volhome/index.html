@@ -262,26 +262,31 @@
             </div>
         </div>
         <div class="section-b">
+
             {% if volreginfo.volunteer_status == "Approved" %}
                 {% if volreginfo.preferred_day == 'Saturday' or volreginfo.preferred_day == 'Sunday'%}
-                    <p>Your upcoming activity is on {{ volreginfo.preferred_day }} at {{ center_name }}</p>
-                    <div id="rsvpPrompt" data-preferred-day="{{ volreginfo.preferred_day }}" data-email="{{curr_user}}">
-                        <p>Are you joining us?</p>
-                        <div class="button-container">
-                            <button id="yesButton" class="buttonyes">Yes</button>
-                            <button id="noButton" class="buttonyes">No</button>
+                    {% if rsvp_check_result == False %}
+                        <p>Your upcoming activity is on {{ volreginfo.preferred_day }} at {{ center_name }}</p>
+                        <div id="rsvpPrompt" data-preferred-day="{{ volreginfo.preferred_day }}" data-email="{{curr_user}}">
+                            <p>Are you joining us?</p>
+                            <div class="button-container">
+                                <button id="yesButton" class="buttonyes">Yes</button>
+                                <button id="noButton" class="buttonyes">No</button>
+                            </div>
                         </div>
-                    </div>
-                    <div id="thanksMessage" class="hidden">
-                        <h3 class="welcome-title">Thanks for confirming!</p>
-                    </div>
-                    <div id="reasonContainer" class="hidden">
-                        <p>Would you like to tell us the reason?</p>
-                        <div class="input-container">
-                            <input type="text" id="reasonInput" placeholder="Your reason here" />
-                            <span class="arrow-icon" id="submitReason">✓</span>
+                        <div id="thanksMessage" class="hidden">
+                            <h3 class="welcome-title">Thanks for confirming!</p>
                         </div>
-                    </div>
+                        <div id="reasonContainer" class="hidden">
+                            <p>Would you like to tell us the reason?</p>
+                            <div class="input-container">
+                                <input type="text" id="reasonInput" placeholder="Your reason here" />
+                                <span class="arrow-icon" id="submitReason">✓</span>
+                            </div>
+                        </div>
+                    {% else %}
+                        <p>Your upcoming activity is on {{ volreginfo.preferred_day }} at {{ center_name }}</p>
+                    {% endif %}
                 {% endif %}
                 <br>
                 <br>

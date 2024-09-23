@@ -7,6 +7,7 @@
  "engine": "InnoDB",
  "field_order": [
   "volunteer",
+  "volunteer_name",
   "date",
   "rsvp_status",
   "reason"
@@ -36,11 +37,17 @@
    "fieldname": "reason",
    "fieldtype": "Data",
    "label": "Reason"
+  },
+  {
+   "fetch_from": "volunteer.full_name",
+   "fieldname": "volunteer_name",
+   "fieldtype": "Data",
+   "label": "Volunteer Name"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-08 18:45:14.173155",
+ "modified": "2024-09-23 23:57:40.286612",
  "modified_by": "Administrator",
  "module": "tim_vms",
  "name": "TIM RSVP",
@@ -68,6 +75,18 @@
    "report": 1,
    "role": "Guest",
    "share": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Volunteer",
+   "share": 1,
+   "write": 1
   }
  ],
  "sort_field": "creation",

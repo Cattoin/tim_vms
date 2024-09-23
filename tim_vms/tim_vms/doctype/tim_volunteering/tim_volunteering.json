@@ -81,6 +81,7 @@
    "options": "Pending\nApproved\nRejected"
   },
   {
+   "fetch_from": "volunteer_email.full_name",
    "fieldname": "volunteer_name",
    "fieldtype": "Data",
    "in_list_view": 1,
@@ -98,7 +99,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-08 13:00:49.081806",
+ "modified": "2024-09-21 18:54:15.401861",
  "modified_by": "Administrator",
  "module": "tim_vms",
  "name": "TIM Volunteering",

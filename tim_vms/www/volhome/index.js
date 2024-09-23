@@ -16,7 +16,20 @@ console.log(preferred_day);
 console.log('which day?');
 document.getElementById('yesButton').addEventListener('click', () => {
     const date = getNextDate(preferred_day);
-    postRSVP("Yes", date, email);
+    frappe.call("tim_vms.tim_vms.api.postrsvp", {
+        rsvp_status: "Yes",
+        date: date,
+        volunteer: email,
+        reason: "NA"
+      })
+      .then(r => {
+        if (r.message.ok) {
+          frappe.msgprint(`Posted RSVP`);
+        }
+        else {
+          frappe.msgprint(r.message.error);
+        }
+    });
     rsvpPrompt.classList.add('hidden');
     thanksMessage.classList.remove('hidden');
 });
@@ -30,7 +43,20 @@ document.getElementById('submitReason').addEventListener('click', () => {
     const reason = reasonInput.value;
     if (reason) {
         const date = getNextDate(preferred_day);
-        postRSVP("No", date, email, reason);
+        frappe.call("tim_vms.tim_vms.api.postrsvp", {
+            rsvp_status: "No",
+            date: date,
+            volunteer: email,
+            reason: reason
+          })
+          .then(r => {
+            if (r.message.ok) {
+              frappe.msgprint(`Posted RSVP`);
+            }
+            else {
+              frappe.msgprint(r.message.error);
+            }
+        });
         reasonContainer.classList.add('hidden');
         thanksMessage.classList.remove('hidden');
     } else {
@@ -46,34 +72,4 @@ function getNextDate(day) {
     const nextDate = new Date(today);
     nextDate.setDate(today.getDate() + daysUntilNext);
     return nextDate.toISOString().split('T')[0]; // Format as YYYY-MM-DD
-}
-
-async function postRSVP(response, date, email, reason = null) {
-    const data = {
-        rsvp_status: response,
-        date: date,
-        volunteer: email
-    };
-
-    if (reason) {
-        data.reason = reason;
-    }
-
-    try {
-        const res = await fetch('/api/resource/TIM RSVP', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            body: JSON.stringify(data)
-        });
-
-        if (!res.ok) {
-            throw new Error('Network response was not ok');
-        }
-        console.log('RSVP submitted successfully:', await res.json());
-    } catch (error) {
-        console.error('Error submitting RSVP:', error);
-    }
 }

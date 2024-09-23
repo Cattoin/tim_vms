@@ -2573,25 +2573,14 @@
     getToken2(messaging, { vapidKey: "BOYVGpgQgNfYW5Zv6ODdPdPVtU0I1Q7ohU9M9mVobqPhb7E-Qb_VfJodMfXq32ULj6DvMJHJLisGHyQ4-IjJK1U" }).then((currentToken) => {
       if (currentToken) {
         console.log(currentToken);
-        const data = {
-          "token": currentToken
-        };
-        fetch("/api/resource/TIM User Notif", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-          },
-          body: JSON.stringify(data)
-        }).then((response) => {
-          if (!response.ok) {
-            throw new Error("Network response was not ok");
+        frappe.call("tim_vms.tim_vms.api.postdevicenotifid", {
+          token: currentToken
+        }).then((r) => {
+          if (r.message.ok) {
+            frappe.msgprint(`Posted token`);
+          } else {
+            frappe.msgprint(r.message.error);
           }
-          return response.json();
-        }).then((data2) => {
-          console.log("Token saved successfully:", data2);
-        }).catch((error) => {
-          console.error("Error saving token:", error);
         });
       } else {
         console.log("No registration token available. Request permission to generate one.");
@@ -2729,4 +2718,4 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-//# sourceMappingURL=fcm.bundle.YHDHZF3T.js.map
+//# sourceMappingURL=fcm.bundle.VTKZQSWM.js.map
