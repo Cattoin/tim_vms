@@ -3,17 +3,14 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import messaging
 
-def user_id(doc):
-    user_email = doc.to_user
-    user_device_id = frappe.get_all(
-        "TIM User Notif", filters={"volunteer": user_email}, fields=["token"]
-    )
-    return user_device_id
-
 @frappe.whitelist()
 def send_notification(doc):
     server_key = '/home/frappeusr/servicefile.json'
-    device_tokens = user_id(doc)
+    device_tokens = frappe.get_list('TIM User Notif',
+        filters={'volunteer': 'user_email'},
+        fields=['token'],
+        as_list=True
+    )
     title = doc.title
     body = doc.body
     send_push_notification(server_key, device_tokens, title, body)
