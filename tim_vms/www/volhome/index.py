@@ -39,17 +39,14 @@ def get_context(context):
 			limit=1
 		)
 
-		context.recent_rsvp_date = frappe.db.get_value(
-			'TIM RSVP',
-			recent_rsvp[0],
-			['date'],
-			as_dict=True
-		)
-
-		# Initialize a variable to store the result
+		if(recent_rsvp):
+			context.recent_rsvp_date = frappe.db.get_value(
+				'TIM RSVP',
+				recent_rsvp[0],
+				['date'],
+				as_dict=True
+			)
 		rsvp_check_result = None
-
-		# Assuming context.recent_rsvp_date['date'] is a datetime.date object
 		rsvp_date = context.recent_rsvp_date['date']
 
 		context.volreginfo = frappe.db.get_value(
@@ -62,11 +59,8 @@ def get_context(context):
 		preferred_day = context.volreginfo['preferred_day']
 		context.center_name = frappe.db.get_value('TIM Center', center_id, 'center_name')
 
-		# Check if rsvp_date is not None and is in the future
 		if rsvp_date:
-			current_date = datetime.now().date()  # Get the current date
-
-			# Check if the RSVP date is in the future
+			current_date = datetime.now().date()
 			if rsvp_date > current_date:
 				context.rsvp_check_result = True 
 			else:
