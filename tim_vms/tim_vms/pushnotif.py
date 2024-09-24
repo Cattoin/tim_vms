@@ -14,6 +14,7 @@ def send_notification(doc):
         fields=['token'],
         as_list=True
     )
+    device_tokens = [token[0] for token in device_tokens]
     title = doc.title
     body = doc.body
     send_push_notification(device_tokens, title, body)
