@@ -3,14 +3,12 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import messaging
 
-def initialize_firebase(server_key):
-    if not firebase_admin._apps:
-        cred = credentials.Certificate(server_key)
-        firebase_admin.initialize_app(cred)
+server_key = '/home/frappeusr/servicefile.json'
+cred = credentials.Certificate(server_key)
+default_app = firebase_admin.initialize_app(cred)
 
 @frappe.whitelist()
 def send_notification(doc):
-    server_key = '/home/frappeusr/servicefile.json'
     device_tokens = frappe.get_list('TIM User Notif',
         filters={'volunteer': 'user_email'},
         fields=['token'],
@@ -18,10 +16,9 @@ def send_notification(doc):
     )
     title = doc.title
     body = doc.body
-    send_push_notification(server_key, device_tokens, title, body)
+    send_push_notification(device_tokens, title, body)
 
-def send_push_notification(server_key, device_tokens, title, body, data=None):
-    initialize_firebase(server_key)
+def send_push_notification(device_tokens, title, body, data=None):
 
     message = messaging.MulticastMessage(
         notification=messaging.Notification(
