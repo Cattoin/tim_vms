@@ -3,6 +3,11 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import messaging
 
+def initialize_firebase(server_key):
+    if not firebase_admin._apps:
+        cred = credentials.Certificate(server_key)
+        firebase_admin.initialize_app(cred)
+
 @frappe.whitelist()
 def send_notification(doc):
     server_key = '/home/frappeusr/servicefile.json'
@@ -16,8 +21,7 @@ def send_notification(doc):
     send_push_notification(server_key, device_tokens, title, body)
 
 def send_push_notification(server_key, device_tokens, title, body, data=None):
-    cred = credentials.Certificate(server_key)
-    firebase_admin.initialize_app(cred)
+    initialize_firebase(server_key)
 
     message = messaging.MulticastMessage(
         notification=messaging.Notification(
