@@ -37,9 +37,9 @@
   },
   {
    "fieldname": "volunteer_email",
-   "fieldtype": "Link",
+   "fieldtype": "Data",
    "label": "Volunteer email",
-   "options": "User"
+   "options": "Email"
   },
   {
    "fieldname": "date",
@@ -99,7 +99,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-21 18:54:15.401861",
+ "modified": "2024-10-04 20:08:22.600753",
  "modified_by": "Administrator",
  "module": "tim_vms",
  "name": "TIM Volunteering",

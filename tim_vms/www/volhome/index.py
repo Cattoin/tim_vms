@@ -12,6 +12,7 @@ def get_context(context):
 			context.hrscount = 0
 		else:
 			context.hrscount = hrsscount
+		rsvp_date = None
 		context.userinfo = frappe.db.get_value(
 		"User",
 			current_user,
@@ -46,18 +47,18 @@ def get_context(context):
 				['date'],
 				as_dict=True
 			)
+			rsvp_date = context.recent_rsvp_date['date']
 		rsvp_check_result = None
-		rsvp_date = context.recent_rsvp_date['date']
-
-		context.volreginfo = frappe.db.get_value(
-			'TIM Registration',
-			recent_doc[0],
-			['vol_contact_number', 'preferred_day', 'assigned_center', 'volunteer_status'],
-			as_dict=True
-		)
-		center_id = context.volreginfo['assigned_center']
-		preferred_day = context.volreginfo['preferred_day']
-		context.center_name = frappe.db.get_value('TIM Center', center_id, 'center_name')
+		if(recent_doc):
+			context.volreginfo = frappe.db.get_value(
+				'TIM Registration',
+				recent_doc[0],
+				['vol_contact_number', 'preferred_day', 'assigned_center', 'volunteer_status'],
+				as_dict=True
+			)
+			center_id = context.volreginfo['assigned_center']
+			preferred_day = context.volreginfo['preferred_day']
+			context.center_name = frappe.db.get_value('TIM Center', center_id, 'center_name')
 
 		if rsvp_date:
 			current_date = datetime.now().date()
@@ -67,12 +68,4 @@ def get_context(context):
 				context.rsvp_check_result = False
 		else:
 			context.rsvp_check_result = None 
-		context.volreginfo = frappe.db.get_value(
-			'TIM Registration',
-			recent_doc[0],
-			['vol_contact_number', 'preferred_day', 'assigned_center', 'volunteer_status'],
-			as_dict=True
-		)
-		center_id = context.volreginfo['assigned_center']
-		context.center_name = frappe.db.get_value('TIM Center', center_id, 'center_name')
 	return context

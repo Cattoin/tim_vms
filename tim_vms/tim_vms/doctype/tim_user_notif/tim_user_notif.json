@@ -18,13 +18,13 @@
   },
   {
    "fieldname": "token",
-   "fieldtype": "Long Text",
+   "fieldtype": "Text",
    "label": "token"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-24 01:17:51.227258",
+ "modified": "2024-09-29 18:45:27.686832",
  "modified_by": "Administrator",
  "module": "tim_vms",
  "name": "TIM User Notif",
