@@ -1,11 +1,15 @@
 {
  "charts": [
   {
-   "chart_name": "RSVP This Week",
-   "label": "RSVP This Week"
+   "chart_name": "Weekly hours",
+   "label": "Weekly hours"
+  },
+  {
+   "chart_name": "Hours count by activity",
+   "label": "Hours count by activity"
   }
  ],
- "content": "[{\"id\":\"vEPDzoJ5vf\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Sign-ups Data\",\"col\":3}},{\"id\":\"0sEr4DblZ-\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Volunteering Data\",\"col\":3}},{\"id\":\"SFrzjEwpGC\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"RSVP Data\",\"col\":3}},{\"id\":\"6vhTQzwFip\",\"type\":\"spacer\",\"data\":{\"col\":3}},{\"id\":\"nTddkJ1dea\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Activity List\",\"col\":3}},{\"id\":\"bvPpljQiB7\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Center List\",\"col\":3}},{\"id\":\"kw2P49SJe5\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"rLHDO8cVAk\",\"type\":\"chart\",\"data\":{\"chart_name\":\"RSVP This Week\",\"col\":6}}]",
+ "content": "[{\"id\":\"vEPDzoJ5vf\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Sign-ups Data\",\"col\":3}},{\"id\":\"0sEr4DblZ-\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Volunteering Data\",\"col\":3}},{\"id\":\"SFrzjEwpGC\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"RSVP Data\",\"col\":3}},{\"id\":\"6vhTQzwFip\",\"type\":\"spacer\",\"data\":{\"col\":3}},{\"id\":\"nTddkJ1dea\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Activity List\",\"col\":3}},{\"id\":\"bvPpljQiB7\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Center List\",\"col\":3}},{\"id\":\"kw2P49SJe5\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"ZXQx3u0qwo\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Monthly Hours Count\",\"col\":4}},{\"id\":\"OeOpJisXmt\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"bJo54myuYn\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Weekly hours\",\"col\":6}},{\"id\":\"Y2Ev4IFP6R\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Hours count by activity\",\"col\":12}}]",
  "creation": "2024-09-08 12:55:59.811431",
  "custom_blocks": [],
  "docstatus": 0,
@@ -18,17 +22,22 @@
  "is_hidden": 0,
  "label": "TIM",
  "links": [],
- "modified": "2024-09-09 01:00:01.660222",
+ "modified": "2024-10-16 14:52:31.910874",
  "modified_by": "Administrator",
  "module": "tim_vms",
  "name": "TIM",
- "number_cards": [],
+ "number_cards": [
+  {
+   "label": "Monthly Hours Count",
+   "number_card_name": "Hours Count"
+  }
+ ],
  "owner": "Administrator",
  "parent_page": "",
  "public": 1,
  "quick_lists": [],
  "roles": [],
- "sequence_id": 23.0,
+ "sequence_id": 1.0,
  "shortcuts": [
   {
    "color": "Green",
